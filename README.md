@@ -2,12 +2,6 @@
 A voting bot written in python 3.x for strawpoll. 
 It can work on Windows, Linux and Mac as long as python is installed.
 
-### Features
-- Easy to use command line driven program
-- Ability to choose from any type of strawpoll domain
-- Ability to remember which proxies have already been used
-- Ability to regenerate proxies automatically
-
 # Usage
 Change the following options in the python file:
 v (whether or not the script prints everything)
