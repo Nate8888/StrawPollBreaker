@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 #
 #                                                                    ,,    ,,
 #   .M"""bgd mm                                  `7MM"""Mq.        `7MM  `7MM  `7MM"""Yp,                           `7MM
@@ -35,11 +34,12 @@ parser.add_argument("-o", "--option", type=str, help="checkbox option id")
 
 args = parser.parse_args()
 
+
 fp = open('proxies.txt', 'r')
 line = fp.readline()
 while line:
     proxy = "http://"+line.strip()
-    print(proxy)
+    print("Proxy "+proxy)
     url = args.target
     payload = "options="+args.option
     proxyDictionary = {"https": proxy}
@@ -50,7 +50,7 @@ while line:
         'x-requested-with': "XMLHttpRequest",
         'user-agent': "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36",
         'content-type': "application/x-www-form-urlencoded",
-        'referer': "https://www.strawpoll.me/16965947",
+        'referer': args.target,
         'Cookie': 'lang=en',
         'accept-encoding': "gzip, deflate, br",
         'accept-language': "en-US,en;q=0.9,pt-BR;q=0.8,pt;q=0.7",
@@ -58,8 +58,9 @@ while line:
     }
     try:
         response = requests.request("POST", url, data=payload, proxies=proxyDictionary, headers=headers)
+        print("\n")
     except:
-        pass
+        print("Failed\n")
 
     if args.verbose:
         print(response.text)
