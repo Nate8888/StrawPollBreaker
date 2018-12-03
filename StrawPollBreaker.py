@@ -25,15 +25,9 @@ except ImportError as msg:
     exit()
 
 parser = argparse.ArgumentParser()
-# parser.add_argument("-v", "--verbose", dest="verb",
-#                   help="print all output", type=bool)
-# parser.add_argument("-t", "--target",
-#                   action="store_false", dest="tar",
-#                   help="the target link", required=True,
-#                   type=str)
-# parser.add_argument("-o", "--option", dest="op", help="checkbox option", required="True", type=str)
 
-parser.add_argument("-v", "--verbose", type=bool, help="print all output")
+
+parser.add_argument("-v", "--verbose", help="print all output", action='store_true')
 parser.add_argument("-t", "--target", type=str, help="target link")
 parser.add_argument("-o", "--option", type=str, help="checkbox option id")
 
