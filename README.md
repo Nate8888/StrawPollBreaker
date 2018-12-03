@@ -1,3 +1,5 @@
+# I Am Not Liable For How You Use This Script. This Is Purely For Educational Purposes 
+
 # Description
 A voting bot written in python 3.x for strawpoll. 
 It can work on Windows, Linux and Mac as long as python is installed.
