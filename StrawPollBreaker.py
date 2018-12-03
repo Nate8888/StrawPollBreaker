@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#!/usr/bin/env python
 #
 #                                                                    ,,    ,,
 #   .M"""bgd mm                                  `7MM"""Mq.        `7MM  `7MM  `7MM"""Yp,                           `7MM
@@ -11,25 +11,41 @@
 #
 #  https://github.com/Adamkadaban
 #
-#  Verson 1.0 alpha 12/3/2018
-v=False #verbose
-t="" #target link
-o="" #vote id
+#  Verson 1.2 alpha 12/3/2018
+
+import os, signal
 
 try:
     import requests
+    import argparse
 except ImportError as msg:
     print("[!] Library not installed: " + str(msg))
+    os.system('python -m pip install requests')
+    os.system('python -m pip install argparse')
     exit()
 
+parser = argparse.ArgumentParser()
+# parser.add_argument("-v", "--verbose", dest="verb",
+#                   help="print all output", type=bool)
+# parser.add_argument("-t", "--target",
+#                   action="store_false", dest="tar",
+#                   help="the target link", required=True,
+#                   type=str)
+# parser.add_argument("-o", "--option", dest="op", help="checkbox option", required="True", type=str)
+
+parser.add_argument("-v", "--verbose", type=bool, help="print all output")
+parser.add_argument("-t", "--target", type=str, help="target link")
+parser.add_argument("-o", "--option", type=str, help="checkbox option id")
+
+args = parser.parse_args()
 
 fp = open('proxies.txt', 'r')
 line = fp.readline()
 while line:
     proxy = "http://"+line.strip()
     print(proxy)
-    url = t
-    payload = "options="+o
+    url = args.target
+    payload = "options="+args.option
     proxyDictionary = {"https": proxy}
     print(proxyDictionary)
     headers = {
@@ -48,6 +64,11 @@ while line:
         response = requests.request("POST", url, data=payload, proxies=proxyDictionary, headers=headers)
     except:
         pass
-    if v:
+
+    if args.verbose:
         print(response.text)
     line = fp.readline()
+
+
+
+print("Done")
