@@ -11,6 +11,8 @@
 #
 #  https://github.com/Adamkadaban
 #
+#  Adam Hassan & Nathan Wilk
+#
 #  Verson 1.2 alpha 12/3/2018
 
 import os, signal
