@@ -12,7 +12,7 @@
 #
 #  Adam Hassan & Nathan Wilk
 #
-#  Verson 1.2 alpha 12/3/2018
+#  Version 2.0 beta 12/3/2018
 
 import os, signal
 
@@ -29,8 +29,8 @@ parser = argparse.ArgumentParser()
 
 
 parser.add_argument("-v", "--verbose", help="print all output", action='store_true')
-parser.add_argument("-t", "--target", type=str, help="target link")
-parser.add_argument("-o", "--option", type=str, help="checkbox option id")
+parser.add_argument("-t", "--target", type=str, help="target link", required=True)
+parser.add_argument("-o", "--option", type=str, help="checkbox option id", required=True)
 
 args = parser.parse_args()
 
