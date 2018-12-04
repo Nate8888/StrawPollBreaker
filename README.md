@@ -21,6 +21,7 @@ python StrawPollBreaker.py
 You can either download the zip or clone it with git then install the required library if it not install yet in your operating system with:
 ```
 pip install requests
+pip install argparse
 
 ```
 
