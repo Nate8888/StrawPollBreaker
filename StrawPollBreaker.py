@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 #
 #                                                                    ,,    ,,
 #   .M"""bgd mm                                  `7MM"""Mq.        `7MM  `7MM  `7MM"""Yp,                           `7MM
@@ -10,8 +9,11 @@
 #  P"Ybmmd"  `Mbmo.JMML.  `Moo9^Yo.   W      W   .JMML.     `Ybmd9'.JMML..JMML..JMMmmmd9  .JMML.   `Mbmmd' `Moo9^Yo..JMML. YA.`Mbmmd'.JMML.
 #
 #  https://github.com/Adamkadaban
+#  https://github.com/Nate8888
 #
-#  Verson 1.2 alpha 12/3/2018
+#  Adam Hassan & Nathan Wilk
+#
+#  Version 2.0 beta 12/3/2018
 
 import os, signal
 
@@ -25,25 +27,20 @@ except ImportError as msg:
     exit()
 
 parser = argparse.ArgumentParser()
-# parser.add_argument("-v", "--verbose", dest="verb",
-#                   help="print all output", type=bool)
-# parser.add_argument("-t", "--target",
-#                   action="store_false", dest="tar",
-#                   help="the target link", required=True,
-#                   type=str)
-# parser.add_argument("-o", "--option", dest="op", help="checkbox option", required="True", type=str)
 
-parser.add_argument("-v", "--verbose", type=bool, help="print all output")
-parser.add_argument("-t", "--target", type=str, help="target link")
-parser.add_argument("-o", "--option", type=str, help="checkbox option id")
+
+parser.add_argument("-v", "--verbose", help="print all output", action='store_true')
+parser.add_argument("-t", "--target", type=str, help="target link", required=True)
+parser.add_argument("-o", "--option", type=str, help="checkbox option id", required=True)
 
 args = parser.parse_args()
+
 
 fp = open('proxies.txt', 'r')
 line = fp.readline()
 while line:
     proxy = "http://"+line.strip()
-    print(proxy)
+    print("Proxy "+proxy)
     url = args.target
     payload = "options="+args.option
     proxyDictionary = {"https": proxy}
@@ -54,7 +51,7 @@ while line:
         'x-requested-with': "XMLHttpRequest",
         'user-agent': "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36",
         'content-type': "application/x-www-form-urlencoded",
-        'referer': "https://www.strawpoll.me/16965947",
+        'referer': args.target,
         'Cookie': 'lang=en',
         'accept-encoding': "gzip, deflate, br",
         'accept-language': "en-US,en;q=0.9,pt-BR;q=0.8,pt;q=0.7",
@@ -62,8 +59,9 @@ while line:
     }
     try:
         response = requests.request("POST", url, data=payload, proxies=proxyDictionary, headers=headers)
+        print("\n")
     except:
-        pass
+        print("Failed\n")
 
     if args.verbose:
         print(response.text)
