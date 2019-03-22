@@ -1,5 +1,3 @@
-# I Am Not Liable For How You Use This Script. This Is Purely For Educational Purposes 
-
 # Description
 A voting bot written in python 3.x for strawpoll. 
 It can work on Windows, Linux and Mac as long as python is installed.
@@ -30,3 +28,5 @@ pip install argparse
 The survey id is always the url pointing to the desired survey.
 
 To find the desired target the user must right click the checkbox you want to vote for, then go to inspect element and search for the "value" option. 
+
+# I Am Not Liable For How You Use This Script. This Is Purely For Educational Purposes 
