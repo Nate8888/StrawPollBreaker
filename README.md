@@ -11,7 +11,7 @@ o (the option that is to be voted for)
 
 Run the program:
 ```
-python StrawPollBreaker.py
+python StrawPollBreaker.py (-v) -o <option> -t <link>
 
 ```
 
