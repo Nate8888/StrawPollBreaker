@@ -25,7 +25,6 @@ except ImportError as msg:
     os.system('python -m pip install requests')
     os.system('python -m pip install argparse')
     exit()
-
 parser = argparse.ArgumentParser()
 
 
